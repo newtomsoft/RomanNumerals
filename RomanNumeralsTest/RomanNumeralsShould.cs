@@ -1,4 +1,4 @@
-using RomanNumeralsConsole;
+using RomanNumeralsCore;
 using System;
 using Xunit;
 

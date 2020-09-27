@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RomanNumeralsConsole
+namespace RomanNumeralsCore
 {
     class Program
     {
