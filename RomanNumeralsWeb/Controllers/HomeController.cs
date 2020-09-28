@@ -29,7 +29,7 @@ namespace RomanNumeralsWeb.Controllers
         [HttpPost]
         public IActionResult Index(int number)
         {
-            var convert = RomanNumerals.Convert(number);
+            var convert = number.ToRomanNumerals();
             return View((object) convert);
         }
 
