@@ -27,10 +27,30 @@ namespace RomanNumeralsWeb.Controllers
 
 
         [HttpPost]
-        public IActionResult Index(int number)
+        public IActionResult Index(int number, string romanNumber)
         {
-            var convert = RomanNumerals.Convert(number);
-            return View((object) convert);
+            if (romanNumber != null)
+            {
+                string convert;
+                try
+                {
+                    convert = romanNumber.ToArabicNumerals().ToString();
+                }
+                catch
+                {
+                    convert = "conversion impossible";
+                }
+                return View((object)convert);
+            }
+            else if (number != 0)
+            {
+                var convert = number.ToRomanNumerals();
+                return View((object)convert);
+            }
+            else
+            {
+                return View((object)"renseignez un champ !");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
