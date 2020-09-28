@@ -8,7 +8,7 @@ namespace RomanNumeralsCore
     {
         public static string ToRomanNumerals(this int number)
         {
-            return RomanNumerals.Convert(number);
+            return RomanNumerals.ToRomanNumerals(number);
         }
     }
 }

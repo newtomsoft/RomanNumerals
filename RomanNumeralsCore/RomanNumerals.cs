@@ -4,7 +4,7 @@ namespace RomanNumeralsCore
 {
     public class RomanNumerals
     {
-        static public string Convert(int number)
+        static public string ToRomanNumerals(int number)
         {
             if (number == 0) return "";
             string result = "";
@@ -53,7 +53,7 @@ namespace RomanNumeralsCore
                 {
                     result += "XC";
                 }
-                return result + Convert(number - quotient * 10);
+                return result + ToRomanNumerals(number - quotient * 10);
             }
             if (number < 1000)
             {
@@ -63,12 +63,12 @@ namespace RomanNumeralsCore
                     for (int i = 1; i <= quotient; i++)
                         result += "C";
 
-                    return result + Convert(number - quotient * 100);
+                    return result + ToRomanNumerals(number - quotient * 100);
                 }
                 else if (number < 500)
                 {
                     result += "CD";
-                    return result + Convert(number - quotient * 100);
+                    return result + ToRomanNumerals(number - quotient * 100);
                 }
                 else if (number < 900)
                 {
@@ -76,10 +76,10 @@ namespace RomanNumeralsCore
                     for (int i = 6; i <= quotient; i++)
                         result += "C";
 
-                    return result + Convert(number - quotient * 100);
+                    return result + ToRomanNumerals(number - quotient * 100);
                 }
                 else // >= 900
-                    return "CM" + Convert(number - quotient * 100);
+                    return "CM" + ToRomanNumerals(number - quotient * 100);
             }
             if (number < 4000)
             {
@@ -87,7 +87,7 @@ namespace RomanNumeralsCore
                 for (int i = 0; i < quotient; i++)
                     result += "M";
 
-                return result + Convert(number - quotient * 1000);
+                return result + ToRomanNumerals(number - quotient * 1000);
             }
             throw new OverflowException("number must be less or equal than 3999");
         }
