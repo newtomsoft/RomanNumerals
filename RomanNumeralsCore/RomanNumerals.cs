@@ -92,6 +92,9 @@ namespace RomanNumeralsCore
             throw new OverflowException("number must be less or equal than 3999");
         }
 
-
+        static public int ToInt(string romanNumber)
+        {
+            return 0;
+        }
     }
 }
