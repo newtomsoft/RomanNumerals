@@ -29,23 +29,29 @@ namespace RomanNumeralsWeb.Controllers
         [HttpPost]
         public IActionResult Index(int number, string romanNumber)
         {
+            string convertToDisplay;
             if (romanNumber != null)
             {
-                string convert;
                 try
                 {
-                    convert = romanNumber.ToArabicNumerals().ToString();
+                    romanNumber = romanNumber.Trim();
+                    var romanToArabic = romanNumber.ToArabicNumerals();
+                    var romanToArabicThenToRoman = romanToArabic.ToRomanNumerals();
+                    if (romanNumber == romanToArabicThenToRoman)
+                        convertToDisplay = $"{romanNumber} signifie {romanToArabic}";
+                    else
+                        convertToDisplay = $"{romanNumber} pourrait signifier {romanToArabic} mais devrait s'écrire {romanToArabic.ToRomanNumerals()}";
                 }
                 catch
                 {
-                    convert = "conversion impossible";
+                    convertToDisplay = "conversion impossible";
                 }
-                return View((object)convert);
+                return View((object)convertToDisplay);
             }
             else if (number != 0)
             {
-                var convert = number.ToRomanNumerals();
-                return View((object)convert);
+                convertToDisplay = $"{number} s'écrit en chiffres romains {number.ToRomanNumerals()}";
+                return View((object)convertToDisplay);
             }
             else
             {
